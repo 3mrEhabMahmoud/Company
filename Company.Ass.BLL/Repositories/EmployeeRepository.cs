@@ -10,42 +10,45 @@ using System.Threading.Tasks;
 
 namespace Company.Ass.BLL.Repositories
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository : GenericRepository<Employee>, IEmployeeRepository
     {
-        private readonly CompanyDbContext _Context;
-        public EmployeeRepository(CompanyDbContext context) {
-
-            _Context = _Context;
-        }
-
-
-        public IEnumerable<Employee> GetAll()
+        public EmployeeRepository(CompanyDbContext context):base(context)
         {
-            return _Context.Employees.ToList();
-        }
-        public Employee? Get(int id)
-        {
-            return _Context.Employees.Find(id);
-        }
-        public int Add(Employee model)
-        {
-            _Context.Employees.Add(model);
-            return _Context.SaveChanges();
-        }
+           }
+        //private readonly CompanyDbContext _Context;
+        //public EmployeeRepository(CompanyDbContext context) {
 
-        public int Delete(Employee model)
-        {
-
-            _Context.Employees.Remove(model);
-            return _Context.SaveChanges();
-        }
+        //    _Context = _Context;
+        //}
 
 
+        //public IEnumerable<Employee> GetAll()
+        //{
+        //    return _Context.Employees.ToList();
+        //}
+        //public Employee? Get(int id)
+        //{
+        //    return _Context.Employees.Find(id);
+        //}
+        //public int Add(Employee model)
+        //{
+        //    _Context.Employees.Add(model);
+        //    return _Context.SaveChanges();
+        //}
 
-        public int Update(Employee model)
-        {
-            _Context.Employees.Update(model);
-            return _Context.SaveChanges();
-        }
+        //public int Delete(Employee model)
+        //{
+
+        //    _Context.Employees.Remove(model);
+        //    return _Context.SaveChanges();
+        //}
+
+
+
+        //public int Update(Employee model)
+        //{
+        //    _Context.Employees.Update(model);
+        //    return _Context.SaveChanges();
+        //}
     }
 }

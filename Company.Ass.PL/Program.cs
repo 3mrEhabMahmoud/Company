@@ -15,6 +15,8 @@ namespace Company.Ass.PL
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();//Allow DI FOR DepartmentRepository
+            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();//Allow DI FOR EmployeeRepository
+
             builder.Services.AddDbContext<CompanyDbContext>(Option =>
             {
                 Option.UseSqlServer(builder.Configuration.GetConnectionString("DefultConnection"));
