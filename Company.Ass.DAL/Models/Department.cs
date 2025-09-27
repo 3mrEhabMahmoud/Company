@@ -9,5 +9,6 @@ namespace Company.Ass.DAL.Models
     public class Department : BaseEntity
     {
         public string Code { get; set; }
+        public List<Employee> Employees {get; set;}
     }
 }
