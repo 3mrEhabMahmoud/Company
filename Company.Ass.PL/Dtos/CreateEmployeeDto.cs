@@ -23,6 +23,7 @@ namespace Company.Ass.PL.Dtos
         public bool IsDeleted { get; set; }
         [DataType("Hiring Date")]
         public DateTime HiringDate { get; set; }
+        public int? DepartmentId { get; set; }
 
     }
 }
