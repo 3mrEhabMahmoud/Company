@@ -65,7 +65,7 @@ namespace Company.Ass.PL.Controllers
         [HttpGet]
         public IActionResult Edit(int? id)
         {
-            return Detalis(id, "Edite");
+            return Detalis(id, "Edit");
         }
 
         [HttpPost]
