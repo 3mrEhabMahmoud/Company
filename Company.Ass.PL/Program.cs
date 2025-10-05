@@ -1,7 +1,9 @@
 using Company.Ass.BLL.Interfaces;
 using Company.Ass.BLL.Repositories;
 using Company.Ass.DAL.Data.Contexts;
+using Company.Ass.DAL.Models;
 using Company.Ass.PL.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,10 +32,20 @@ namespace Company.Ass.PL
             //builder.Services.AddSingleton(); //Create object Life Timer Per App
 
             builder.Services.AddScoped<IScopedService, ScopedService>();//Per Request
-            builder.Services.AddTransient<ITransentService,TransentService>();//Per Operation
+            builder.Services.AddTransient<ITransentService, TransentService>();//Per Operation
             builder.Services.AddSingleton<ISingletonService, SingletonService>();//per App
 
+            builder.Services.AddAutoMapper(M => M.AddProfile(new EmployeeProfile()));
 
+            builder.Services.AddIdentity<AppUser, IdentityRole>()
+                            .AddEntityFrameworkStores<CompanyDbContext>();
+
+            builder.Services.ConfigureApplicationCookie(config =>
+            {
+                config.LoginPath = "/Account/SignIn";
+            }
+                );
+                           
 
             var app = builder.Build();
 
@@ -49,7 +61,7 @@ namespace Company.Ass.PL
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

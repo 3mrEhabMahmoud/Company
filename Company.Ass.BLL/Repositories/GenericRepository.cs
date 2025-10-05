@@ -18,40 +18,37 @@ namespace Company.Ass.BLL.Repositories
 
             _Context = context;
         }
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
             if (typeof(T) == typeof(Employee))
             {
-                return (IEnumerable<T>)_Context.Employees.Include(E => E.Department).ToList();
+                return (IEnumerable<T>)await _Context.Employees.Include(E => E.Department).ToListAsync();
             }
-            return _Context.Set<T>().ToList();
+            return await _Context.Set<T>().ToListAsync();
         }
-        public T? Get(int id)
+        public async Task<T?> GetAsync(int id)
         {
             if (typeof(T) == typeof(Employee))
             {
-                return _Context.Employees.Include(E => E.Department).FirstOrDefault(E=>E.id==id) as T;
+                return await _Context.Employees.Include(E => E.Department).FirstOrDefaultAsync(E => E.id == id) as T;
             }
             return _Context.Set<T>().Find(id);
         }
 
-        public int Add(T model)
+        public async Task AddAsync(T model)
         {
-            _Context.Set<T>().Add(model);
-            return _Context.SaveChanges();
+            await _Context.Set<T>().AddAsync(model);
         }
 
-        public int Delete(T model)
+        public void Delete(T model)
         {
             _Context.Set<T>().Remove(model);
-            return _Context.SaveChanges();
         }
 
 
-        public int Update(T model)
+        public void Update(T model)
         {
             _Context.Set<T>().Update(model);
-            return _Context.SaveChanges();
         }
     }
 }

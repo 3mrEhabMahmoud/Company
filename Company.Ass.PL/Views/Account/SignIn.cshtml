@@ -1,0 +1,36 @@
+﻿@model SignInDto
+@{
+    ViewData["Title"] = "SignIn";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+</div>
+
+<div asp-validation-summary="All" class="success-message" id="successMessage">
+    ✓ Application submitted successfully! We'll review your pitch and get back to you soon.
+</div>
+
+<form id="fundingForm" asp-action="SignIn">
+    <div class="form-section">
+        <div class="section-title">
+            <span class="section-number">1</span>
+            Company Information
+        </div>
+       
+        <div class="form-group">
+            <label>Email<span class="required">*</span></label>
+            <input asp-for="Email" placeholder="Enter your Email">
+        </div>
+        <div class="form-group">
+            <label>Password <span class="required">*</span></label>
+            <input asp-for="Password" required placeholder="Enter your Password">
+        </div>
+       
+        <input asp-for="RememberMe" class="form-check-box"  />
+        <span>Remember Me</span>
+    </div>
+    <button type="submit" class="submit-btn">SIGNIN</button>
+    <p>Don't have an Account? <a asp-action="SignUp"> Create New Account?</a></p>
+</form>

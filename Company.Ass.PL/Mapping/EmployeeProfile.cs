@@ -6,11 +6,13 @@ using Microsoft.Build.Framework.Profiler;
 
 namespace Company.Ass.PL.Mapping
 {
-    public class EmployeeProfile: Profile
+    public class EmployeeProfile : Profile
     {
         public EmployeeProfile()
         {
             CreateMap<CreateEmployeeDto, Employee>();
+            CreateMap<Employee, CreateEmployeeDto>();
+
         }
     }
 }

@@ -22,6 +22,8 @@ namespace Company.Ass.DAL.Models
         public Department? Department { get; set; }
         [DisplayName ("Department")]
         public int? DepartmentId { get; set; }
+        public string? ImageName { get; set; }
+
 
 
     }
