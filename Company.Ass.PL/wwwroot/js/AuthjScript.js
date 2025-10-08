@@ -66,3 +66,6 @@ form.addEventListener('submit', function (e) {
 
 // Initial progress update
 updateProgress();
+
+
+

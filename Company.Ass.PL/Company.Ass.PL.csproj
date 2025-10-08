@@ -25,4 +25,8 @@
     <Folder Include="wwwroot\Files\videos\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Dtos\ForgetPasswordDto.cs" />
+  </ItemGroup>
+
 </Project>

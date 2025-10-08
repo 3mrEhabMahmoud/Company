@@ -13,6 +13,7 @@
 </div>
 
 <form id="fundingForm" asp-action="SignIn">
+
     <div class="form-section">
         <div class="section-title">
             <span class="section-number">1</span>
@@ -28,9 +29,15 @@
             <input asp-for="Password" required placeholder="Enter your Password">
         </div>
        
-        <input asp-for="RememberMe" class="form-check-box"  />
+        <input asp-for="RememberMe" class="checkbox"  />
         <span>Remember Me</span>
     </div>
     <button type="submit" class="submit-btn">SIGNIN</button>
+    <p> <a asp-action="ForgetPassword"> Forget Password ?</a></p>
     <p>Don't have an Account? <a asp-action="SignUp"> Create New Account?</a></p>
+
 </form>
+@section validationSection {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

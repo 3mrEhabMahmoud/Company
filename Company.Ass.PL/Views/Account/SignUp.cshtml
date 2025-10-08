@@ -1,9 +1,9 @@
-﻿@model SignUpDto
+﻿
+@model SignUpDto
 @{
     ViewData["Title"] = "SignUp";
     Layout = "~/Views/Shared/_AuthLayout.cshtml";
 }
-
 
 
 <div class="progress-bar">
@@ -42,9 +42,13 @@
             <label>Confirm Password <span class="required">*</span></label>
             <input asp-for="ConfirmPassword" required placeholder="">
         </div>
-        <input asp-for="IsAgree" class="form-check-box" required/>
+        <input asp-for="IsAgree" class="form-check-box" required />
         <span>I Agree To the Terms & Conditions</span>
     </div>
     <button type="submit" class="submit-btn">Submit Application</button>
     <p>Don't have an Account? <a asp-action="SignIn"> Login Now!</a></p>
 </form>
+@section validationSection {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

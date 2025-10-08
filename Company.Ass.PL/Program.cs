@@ -2,6 +2,7 @@ using Company.Ass.BLL.Interfaces;
 using Company.Ass.BLL.Repositories;
 using Company.Ass.DAL.Data.Contexts;
 using Company.Ass.DAL.Models;
+using Company.Ass.PL.Mapping;
 using Company.Ass.PL.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis.Options;
@@ -38,7 +39,8 @@ namespace Company.Ass.PL
             builder.Services.AddAutoMapper(M => M.AddProfile(new EmployeeProfile()));
 
             builder.Services.AddIdentity<AppUser, IdentityRole>()
-                            .AddEntityFrameworkStores<CompanyDbContext>();
+                            .AddEntityFrameworkStores<CompanyDbContext>()
+                            .AddDefaultTokenProviders();
 
             builder.Services.ConfigureApplicationCookie(config =>
             {
